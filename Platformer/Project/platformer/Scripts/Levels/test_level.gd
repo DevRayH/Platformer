@@ -8,12 +8,9 @@ func _ready() -> void:
 	ready_scene()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
 func ready_scene():
-	var node = mushroom.instantiate()
-	self.add_child(node)
-	node.position = get_tree().get_nodes_in_group("SpawnPoints")[0].position
+	GameMaster.scene_change.npc_loading(mushroom, self, get_tree().get_nodes_in_group("SpawnPoints")[0].position)
+
+
+func _on_timer_timeout() -> void:
+	GameMaster.scene_change.npc_loading(mushroom, self, get_tree().get_nodes_in_group("SpawnPoints")[0].position)

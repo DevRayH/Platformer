@@ -25,16 +25,16 @@ _surfaces = [{
 size = Vector2(127.497, 119.742)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mddpl"]
-vertices = PackedVector2Array(1091, 470.961, 1091, 526.023, 102.391, 526.023, 98.6484, 467.063)
+vertices = PackedVector2Array(1090.86, 526.023, 102.719, 526.023, 95.2891, 267.109, 1087.13, 262.211)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(93, 536.025, 1101, 536.025, 1101, 461, 88, 457.025)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(93, 536.025, 1101, 536.025, 1097, 252.175, 85, 257.175)])
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_lo8to")
 
 [node name="Ground" type="MeshInstance2D" parent="."]
 top_level = true
-position = Vector2(599.5, 510.5)
+position = Vector2(599.5, 600)
 scale = Vector2(7.94531, 0.242188)
 mesh = SubResource("ArrayMesh_t3abg")
 texture = ExtResource("1_sagn1")
@@ -44,20 +44,58 @@ texture = ExtResource("1_sagn1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
 shape = SubResource("RectangleShape2D_3o4ay")
 
+[node name="GroundLevel2" type="MeshInstance2D" parent="."]
+top_level = true
+position = Vector2(241.84, 527.385)
+scale = Vector2(2.05469, 0.242188)
+mesh = SubResource("ArrayMesh_t3abg")
+texture = ExtResource("1_sagn1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GroundLevel2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLevel2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_3o4ay")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="GroundLevel2"]
+vertices = PackedVector2Array(62.8611, -63.5251, 62.8611, 56.2166, -66.1122, 68.6035, -65.1389, -75.9121)
+affect_navigation_mesh = true
+
+[node name="GroundLevel3" type="MeshInstance2D" parent="."]
+top_level = true
+position = Vector2(630.915, 454.405)
+scale = Vector2(2.05469, 0.242188)
+mesh = SubResource("ArrayMesh_t3abg")
+texture = ExtResource("1_sagn1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GroundLevel3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLevel3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_3o4ay")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="GroundLevel3"]
+vertices = PackedVector2Array(-63.7153, 56.1342, -63.7153, -63.6075, 62.8246, -63.6075, 63.798, 72.6503)
+affect_navigation_mesh = true
+
 [node name="Background1" type="Sprite2D" parent="."]
 position = Vector2(574.5, 319.5)
 scale = Vector2(1.19896, 1.37708)
 texture = ExtResource("2_qqttg")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("4_yxyc6")]
-position = Vector2(1004, 432)
+position = Vector2(641, 387)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(0, -42.025)
+position = Vector2(0, 51.825)
 navigation_polygon = SubResource("NavigationPolygon_mddpl")
 
 [node name="PatrolPoint" parent="." instance=ExtResource("5_mwl76")]
-position = Vector2(455.235, 454.495)
+position = Vector2(455.235, 534.495)
 
 [node name="Player" parent="." instance=ExtResource("6_untl4")]
-position = Vector2(527, 436)
+position = Vector2(527, 544)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

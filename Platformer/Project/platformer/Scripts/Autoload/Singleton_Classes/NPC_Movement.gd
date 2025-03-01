@@ -8,8 +8,11 @@ enum NPCStates{IDLE, RUNNING, ATTACKING}
 
 func movement(passedBody:CharacterBody2D, time:float):
 	var direction:Vector2 = Vector2()
-	passedBody.navlink.target_position = tree.get_nodes_in_group("PatrolPoints")[0].position
+	#passedBody.navlink.target_position = tree.get_nodes_in_group("PatrolPoints")[0].position
+	passedBody.navlink.target_position = GameMaster.obj_ref.current_player.position
 	direction = passedBody.navlink.get_next_path_position() - passedBody.position
+	if not passedBody.is_on_floor():
+		direction += passedBody.gravity
 	
 	if passedBody.can_attack == false:
 		direction = direction.normalized()

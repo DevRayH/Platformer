@@ -11,6 +11,8 @@ var current_target:CharacterBody2D
 
 @onready var anim:AnimatedSprite2D = $AnimatedSprite2D
 @onready var navlink:NavigationAgent2D = $NavigationLink2D
+@onready var gravity:Vector2 = get_gravity()
+
 @export var health_resource:Health = Health.new()
 
 

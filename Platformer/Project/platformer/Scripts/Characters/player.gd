@@ -5,6 +5,9 @@ const JUMP_VELOCITY = -400.0
 
 @export var health_resource:Health = Health.new()
 
+func _enter_tree() -> void:
+	GameMaster.obj_ref.current_player = self
+
 
 func _physics_process(delta: float) -> void:
 	if health_resource.current_health == 0:
