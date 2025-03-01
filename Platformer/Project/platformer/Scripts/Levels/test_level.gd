@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
 
 
 func ready_scene():
-	var node = mushroom.instantiate()
-	self.add_child(node)
-	node.position = get_tree().get_nodes_in_group("SpawnPoints")[0].position
+	#var node = mushroom.instantiate()
+	#self.add_child(node)
+	#node.position = get_tree().get_nodes_in_group("SpawnPoints")[0].position
+	pass

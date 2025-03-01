@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://ce13d28oogbbh" path="res://Assets/PixelFantasy_Caves_1.0/background3.png" id="2_qqttg"]
 [ext_resource type="PackedScene" uid="uid://bky1md52fxi51" path="res://Objects/spawn_point.tscn" id="4_yxyc6"]
 [ext_resource type="PackedScene" uid="uid://blky32l83ssv3" path="res://Objects/patrol_point.tscn" id="5_mwl76"]
+<<<<<<< Updated upstream:Platformer/Project/platformer/test_level.tscn
 [ext_resource type="PackedScene" uid="uid://cb4mtsv4w4j1e" path="res://Scenes/player.tscn" id="6_untl4"]
+=======
+[ext_resource type="PackedScene" uid="uid://cah03uq1vldnc" path="res://Scenes/player.tscn" id="6_jqs21"]
+>>>>>>> Stashed changes:Platformer/Project/platformer/Levels/test_level.tscn
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t3abg"]
 _surfaces = [{
@@ -53,11 +57,19 @@ texture = ExtResource("2_qqttg")
 position = Vector2(1004, 432)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(0, -42.025)
 navigation_polygon = SubResource("NavigationPolygon_mddpl")
 
 [node name="PatrolPoint" parent="." instance=ExtResource("5_mwl76")]
+<<<<<<< Updated upstream:Platformer/Project/platformer/test_level.tscn
 position = Vector2(455.235, 454.495)
 
 [node name="Player" parent="." instance=ExtResource("6_untl4")]
 position = Vector2(527, 436)
+=======
+position = Vector2(106, 432)
+
+[node name="Player" parent="." instance=ExtResource("6_jqs21")]
+position = Vector2(188, 489)
+>>>>>>> Stashed changes:Platformer/Project/platformer/Levels/test_level.tscn

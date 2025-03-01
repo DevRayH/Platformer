@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=13 format=3 uid="uid://cb4mtsv4w4j1e"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_0luyi"]
 [ext_resource type="Script" path="res://Scripts/Resources/Health.gd" id="2_gka08"]
 [ext_resource type="Texture2D" uid="uid://jurfujtvu5lg" path="res://Assets/Jotem/Jotem spritesheet.png" id="2_p6ep5"]
+=======
+[gd_scene load_steps=24 format=3 uid="uid://cfaxx32mrcara"]
+
+[ext_resource type="Script" path="res://Scenes/kf/player.gd" id="1_worc0"]
+[ext_resource type="Texture2D" uid="uid://jurfujtvu5lg" path="res://Assets/Jotem/Jotem spritesheet.png" id="2_t038g"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Resource" id="Resource_r35uj"]
 script = ExtResource("2_gka08")
@@ -68,11 +75,15 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+<<<<<<< Updated upstream
 scale = Vector2(2, 2)
 collision_layer = 129
 collision_mask = 129
 script = ExtResource("1_0luyi")
 health_resource = SubResource("Resource_r35uj")
+=======
+script = ExtResource("1_worc0")
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1.5)
