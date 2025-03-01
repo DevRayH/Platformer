@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 var speed:float = 100.0
 var accel:float = 30.0
-var Velocity:Vector2
 
 var nav_mesh_ready:bool = false
 var can_attack:bool = false
