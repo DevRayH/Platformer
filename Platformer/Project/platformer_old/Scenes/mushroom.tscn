@@ -1,15 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://mlrqr7087jg5"]
+[gd_scene load_steps=23 format=3 uid="uid://mlrqr7087jg5"]
 
 [ext_resource type="Texture2D" uid="uid://c8o1unqjeecku" path="res://Assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_nq82t"]
-[ext_resource type="Script" path="res://Scripts/Characters/mushroom.gd" id="1_wte86"]
-[ext_resource type="Script" path="res://Scripts/Resources/Health.gd" id="2_2foci"]
+[ext_resource type="Script" path="res://Scripts/mushroom.gd" id="1_wte86"]
 [ext_resource type="Texture2D" uid="uid://w0kumbqeboh3" path="res://Assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Attack.png" id="2_78fyi"]
-[ext_resource type="Texture2D" uid="uid://jvyegcygdabb" path="res://Assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_kmkt6"]
-
-[sub_resource type="Resource" id="Resource_blvpk"]
-script = ExtResource("2_2foci")
-current_health = 10
-attack_damage = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ues2c"]
 size = Vector2(30, 33)
@@ -82,38 +75,6 @@ region = Rect2(400, 0, 80, 64)
 atlas = ExtResource("1_nq82t")
 region = Rect2(480, 0, 80, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqi8g"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(0, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1vct"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(80, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_po17h"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(160, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j110k"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(240, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ta0i"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(320, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xry7q"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(400, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ux8c"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(480, 0, 80, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbg6j"]
-atlas = ExtResource("4_kmkt6")
-region = Rect2(560, 0, 80, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_tum0h"]
 animations = [{
 "frames": [{
@@ -177,49 +138,14 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uqi8g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u1vct")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_po17h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j110k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ta0i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xry7q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ux8c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wbg6j")
-}],
-"loop": false,
-"name": &"Run",
-"speed": 5.0
-}, {
 "frames": [],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_npdad"]
-size = Vector2(20, 32)
-
 [node name="Mushroom" type="CharacterBody2D"]
-collision_layer = 129
-collision_mask = 129
 script = ExtResource("1_wte86")
-health_resource = SubResource("Resource_blvpk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
@@ -231,21 +157,15 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tum0h")
 animation = &"Attack"
 autoplay = "Idle"
-
-[node name="AttackArea" type="Area2D" parent="AnimatedSprite2D"]
-collision_layer = 128
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AttackArea"]
-position = Vector2(-21, 16)
-shape = SubResource("RectangleShape2D_npdad")
+frame = 9
+frame_progress = 1.0
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
+autostart = true
 
 [node name="NavigationLink2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 60.0
 
-[connection signal="body_entered" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
