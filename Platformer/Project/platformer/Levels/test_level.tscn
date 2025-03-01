@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://pcogq5astmkg"]
+[gd_scene load_steps=9 format=3 uid="uid://pcogq5astmkg"]
 
+[ext_resource type="Script" path="res://Scripts/test_level.gd" id="1_lo8to"]
 [ext_resource type="Texture2D" uid="uid://c3yvm6itjt0fx" path="res://icon.svg" id="1_sagn1"]
 [ext_resource type="Texture2D" uid="uid://ce13d28oogbbh" path="res://Assets/PixelFantasy_Caves_1.0/background3.png" id="2_qqttg"]
+[ext_resource type="PackedScene" uid="uid://bky1md52fxi51" path="res://Objects/spawn_point.tscn" id="4_yxyc6"]
+[ext_resource type="PackedScene" uid="uid://blky32l83ssv3" path="res://Objects/patrol_point.tscn" id="5_mwl76"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t3abg"]
 _surfaces = [{
@@ -20,7 +23,13 @@ _surfaces = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3o4ay"]
 size = Vector2(127.497, 119.742)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mddpl"]
+vertices = PackedVector2Array(1091, 470.961, 1091, 526.023, 102.391, 526.023, 98.6484, 467.063)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(93, 536.025, 1101, 536.025, 1101, 461, 88, 457.025)])
+
 [node name="TestLevel" type="Node2D"]
+script = ExtResource("1_lo8to")
 
 [node name="Ground" type="MeshInstance2D" parent="."]
 top_level = true
@@ -32,10 +41,19 @@ texture = ExtResource("1_sagn1")
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3o4ay")
 
 [node name="Background1" type="Sprite2D" parent="."]
 position = Vector2(574.5, 319.5)
 scale = Vector2(1.19896, 1.37708)
 texture = ExtResource("2_qqttg")
+
+[node name="SpawnPoint" parent="." instance=ExtResource("4_yxyc6")]
+position = Vector2(1004, 432)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -42.025)
+navigation_polygon = SubResource("NavigationPolygon_mddpl")
+
+[node name="PatrolPoint" parent="." instance=ExtResource("5_mwl76")]
+position = Vector2(106, 432)
