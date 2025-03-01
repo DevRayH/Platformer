@@ -168,3 +168,5 @@ shape = SubResource("RectangleShape2D_6a73g")
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_x28jc")
 animation = &"Attack"
+
+[node name="Camera2D" type="Camera2D" parent="Sprites"]
