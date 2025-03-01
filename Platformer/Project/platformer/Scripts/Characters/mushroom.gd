@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if nav_mesh_ready:
-		movement(delta)
+		GameMaster.npc_object.movement(self, delta)
 	
 
 
@@ -28,18 +28,6 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	nav_mesh_ready = true
 
-func movement(delta:float):
-	var direction:Vector2 = Vector2()
-	navlink.target_position = get_tree().get_nodes_in_group("PatrolPoints")[0].position
-	direction = navlink.get_next_path_position() - self.position
-	
-	if can_attack == false:
-		direction = direction.normalized()
-		velocity = velocity.lerp(direction * speed, accel * delta)
-		move_and_slide()
-		
-	set_animation()
-	
 	
 func set_animation():
 	if can_attack == false:
