@@ -244,8 +244,8 @@ shape = SubResource("RectangleShape2D_npdad")
 one_shot = true
 
 [node name="NavigationLink2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 60.0
+target_desired_distance = 25.0
 
 [connection signal="body_entered" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_exited"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="target_reached" from="NavigationLink2D" to="." method="_on_navigation_link_2d_target_reached"]
