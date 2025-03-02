@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://34yyusw4fw1e"]
+
+[node name="InfoMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -574.0
+offset_top = 3.0
+offset_right = 574.0
+offset_bottom = 625.0
+grow_horizontal = 2
+vertical = true
+
+[node name="GridContainer" type="GridContainer" parent="BoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 1085
+columns = 2
+
+[node name="LivesLable" type="Label" parent="BoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "3"
+
+[node name="ScoreLable" type="Label" parent="BoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+color = Color(0.784314, 0, 0.207843, 0.396078)

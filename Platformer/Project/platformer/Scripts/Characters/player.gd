@@ -16,19 +16,21 @@ func _physics_process(delta: float) -> void:
 		GameMaster.scene_change.remove_scene(self, GameMaster.obj_ref.scene_base.get_child(0))
 		GameMaster.obj_ref.current_player = null
 		return
-		
-	jump()
+	
+	movement()
 	fall(delta)
 	
 	move_and_slide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
-		movement()
+	if event.is_action_pressed("ui_accept"):
+		jump()
 	if event.is_action_pressed("Pause"):
 		pause()
+		
 
+#regionMovement Node movement
 func movement():
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -41,11 +43,14 @@ func fall(delta:float):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+
+
 func jump():
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+#endregion
+
 
 func pause():
 	GameMaster.npc_object.paused = true

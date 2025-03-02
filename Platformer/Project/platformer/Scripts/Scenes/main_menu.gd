@@ -4,6 +4,7 @@ extends Control
 var first_level:PackedScene = preload("res://Levels/test_level.tscn")
 # Preloads the credit scene
 var credits_menu:PackedScene = preload("res://Scenes/credits_menu.tscn")
+@onready var info_menu:PackedScene = load("res://Scenes/info_menu.tscn")
 
 @onready var audio:AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -16,6 +17,7 @@ func _ready() -> void:
 # Start button loads the first scene into the scene tree and removes the main menu from the scene tree
 func _on_start_b_pressed() -> void:
 	GameMaster.scene_change.load_scene(first_level, GameMaster.obj_ref.scene_base)
+	GameMaster.scene_change.load_scene(info_menu, GameMaster.obj_ref.menu_base)
 	GameMaster.scene_change.remove_scene(self, GameMaster.obj_ref.menu_base)
 
 

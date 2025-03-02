@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://hyjx2ox1qqgm"]
+[gd_scene load_steps=4 format=3 uid="uid://hyjx2ox1qqgm"]
 
 [ext_resource type="Script" path="res://Scripts/Scenes/pause_menu.gd" id="1_i5l3y"]
 [ext_resource type="Texture2D" uid="uid://c3yvm6itjt0fx" path="res://icon.svg" id="2_f478d"]
+[ext_resource type="AudioStream" uid="uid://dyte7s52pul1d" path="res://Assets/AudioFiles/Voicy_Rick Sanchez Violation.mp3" id="3_or5k6"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -55,6 +56,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_f478d")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_or5k6")
 
 [connection signal="pressed" from="CanvasLayer/BoxContainer/GridContainer/ExitB" to="." method="_on_exit_b_pressed"]
 [connection signal="pressed" from="CanvasLayer/BoxContainer/GridContainer/ReturnB" to="." method="_on_return_b_pressed"]
