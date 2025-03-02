@@ -12,7 +12,7 @@ current_health = 10
 attack_damage = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ues2c"]
-size = Vector2(30, 33)
+size = Vector2(12, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_itmri"]
 atlas = ExtResource("2_78fyi")
@@ -212,8 +212,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_npdad"]
-size = Vector2(20, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yi75"]
+size = Vector2(32, 21)
 
 [node name="Mushroom" type="CharacterBody2D"]
 collision_layer = 129
@@ -231,20 +231,24 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tum0h")
 animation = &"Attack"
 autoplay = "Idle"
+frame = 9
+frame_progress = 1.0
 
 [node name="AttackArea" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 16)
 collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AttackArea"]
-position = Vector2(-21, 16)
-shape = SubResource("RectangleShape2D_npdad")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_4yi75")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="NavigationLink2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 25.0
+path_postprocessing = 1
 
 [connection signal="body_entered" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_exited"]

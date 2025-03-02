@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cracpsdyy37fc"]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/game_base.gd" id="1_pv45e"]
+
+[node name="GameBase" type="Node"]
+script = ExtResource("1_pv45e")
+
+[node name="SceneBase" type="Node" parent="."]
+
+[node name="MenuBase" type="Node" parent="."]
