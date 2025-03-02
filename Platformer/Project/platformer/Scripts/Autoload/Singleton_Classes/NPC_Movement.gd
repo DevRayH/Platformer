@@ -1,6 +1,8 @@
 extends Node
 class_name NPC_Object
 
+var paused:bool = false
+
 # Stores a reference to the active gametree
 var tree:SceneTree
 
@@ -9,6 +11,8 @@ enum NPCStates{IDLE, RUNNING, ATTACKING}
 
 
 func movement(passedBody:CharacterBody2D, time:float):
+	if paused == true:
+		return
 	# Tests current state and active player node
 	if passedBody.current_state != NPCStates.ATTACKING and GameMaster.obj_ref.current_player != null:
 		var direction:Vector2 = Vector2()
