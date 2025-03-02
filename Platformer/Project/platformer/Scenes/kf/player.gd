@@ -23,6 +23,14 @@ var can_attack: bool = false
 func _process(delta) -> void:
 	set_animation()	
 
+	#Attack code
+	if Input.is_action_pressed("fire1"):
+		can_attack = true
+		anim.play("Attack")
+		#set a timer to start the next animation
+		attack_delay.start()
+		do_damage() 
+
 func _ready() -> void:
 	attack_delay.timeout.connect(set_attack_mode)
 
@@ -55,14 +63,10 @@ func move_to_direction() -> void:
 		velocity.y += gravity
 
 
+#It doesn't work properly for attack button, like it doesn't register inputs when
+#the attack button is being held. 
 func _unhandled_input(event: InputEvent) -> void:
-	#Attack code
-	if Input.is_action_pressed("fire1"):
-		can_attack = true
-		anim.play("Attack")
-		#set a timer to start the next animation
-		attack_delay.start()
-		do_damage() 
+	pass
 		
 
 #Ray's animation code
