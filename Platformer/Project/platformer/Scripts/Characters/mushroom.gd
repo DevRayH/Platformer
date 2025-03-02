@@ -23,7 +23,6 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	nav_mesh_ready = true
 
-<<<<<<< HEAD
 	
 func set_animation():
 	if can_attack == false:
@@ -36,8 +35,6 @@ func set_animation():
 			anim.play("Attack")
 			current_target.health_resource.current_health -= health_resource.attack_damage
 
-=======
->>>>>>> main
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':

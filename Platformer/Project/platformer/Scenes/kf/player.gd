@@ -18,12 +18,10 @@ var anim_state = "Idle"
 
 func _process(delta):
 	if velocity != Vector2.ZERO:
-		anim_state = "Idle"
-		sprite.play(anim_state)
+		pass
 
 	if Input.is_action_pressed("fire1"):
-		anim_state = "Attack"
-		sprite.play(anim_state)
+		pass
 
 func _physics_process(delta: float) -> void:
 	#reset the velocity
@@ -32,16 +30,14 @@ func _physics_process(delta: float) -> void:
 	#movement code	
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= speed
-		anim_state = "Walk" 
 		sprite.flip_h = true
 	elif Input.is_action_pressed("move_right"):
 		velocity.x += speed 
-		anim_state = "Walk"
 		sprite.flip_h = false
 
 	#jump action
-	if Input.is_action_just_pressed("jump"):
-		velocity.y = -2000
+	#if Input.is_action_just_pressed("jump"):
+		#velocity.y = -2000
 		
 	#apply gravity 
 	#if not is_on_floor():
@@ -49,3 +45,14 @@ func _physics_process(delta: float) -> void:
 
 	#call the move function
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	#Movement code
+	if Input.is_action_pressed("move_left"):
+		pass
+	
+	if Input.is_action_pressed("move_right"):
+		pass
+
+	if Input.is_action_just_pressed("jump"):
+		pass
