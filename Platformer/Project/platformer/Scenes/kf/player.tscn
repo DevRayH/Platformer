@@ -1,7 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvvja5jybvodm"]
+[gd_scene load_steps=27 format=3 uid="uid://cvvja5jybvodm"]
 
 [ext_resource type="Script" path="res://Scenes/kf/player.gd" id="1_j22so"]
+[ext_resource type="Script" path="res://Scripts/Resources/Health.gd" id="2_i684y"]
 [ext_resource type="Texture2D" uid="uid://jurfujtvu5lg" path="res://Assets/Jotem/Jotem spritesheet.png" id="2_t038g"]
+
+[sub_resource type="Resource" id="Resource_cceus"]
+script = ExtResource("2_i684y")
+current_health = 100
+attack_damage = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a73g"]
 size = Vector2(34, 43)
@@ -100,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4dfe3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 12.0
 }, {
@@ -152,13 +158,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nu1j4")
 }],
-"loop": true,
+"loop": false,
 "name": &"Walk",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kgsq"]
+size = Vector2(66, 31)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_j22so")
+health_resource = SubResource("Resource_cceus")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)
@@ -168,3 +178,16 @@ shape = SubResource("RectangleShape2D_6a73g")
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_x28jc")
 animation = &"Attack"
+autoplay = "Idle"
+
+[node name="AttackDelay" type="Timer" parent="."]
+wait_time = 0.42
+one_shot = true
+
+[node name="AttackCol" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCol"]
+position = Vector2(1, -15.5)
+shape = SubResource("RectangleShape2D_6kgsq")

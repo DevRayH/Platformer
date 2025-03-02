@@ -4,55 +4,85 @@ extends CharacterBody2D
 var speed = 200
 var gravity = 80
 
-#animation variables
-var animations: Array = [
-					"Idle",
-					"Walk",
-					"Attack"]
+# Creates a local heath resource and exports it to the inspector
+@export var health_resource:Health = Health.new()
 
-#states
-var anim_state = "Idle"
+#Animation states and variables 
+var anim_state: String = "Idle"
+#used for conditional check if a animation can be skipped or not
+var anim_dict: Dictionary = {"Idle": true, 
+							"Walk": true, 
+							"Attack": false}
+var can_attack: bool = false
 
 #nodes
-@onready var sprite = $Sprites
+@onready var anim = $Sprites
+@onready var attack_delay = $AttackDelay
+@onready var attack_col = $AttackCol
 
-func _process(delta):
-	if velocity != Vector2.ZERO:
-		pass
+func _process(delta) -> void:
+	set_animation()	
 
-	if Input.is_action_pressed("fire1"):
-		pass
+func _ready() -> void:
+	attack_delay.timeout.connect(set_attack_mode)
 
 func _physics_process(delta: float) -> void:
 	#reset the velocity
 	velocity = Vector2.ZERO
 
-	#movement code	
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= speed
-		sprite.flip_h = true
-	elif Input.is_action_pressed("move_right"):
-		velocity.x += speed 
-		sprite.flip_h = false
-
-	#jump action
-	#if Input.is_action_just_pressed("jump"):
-		#velocity.y = -2000
-		
-	#apply gravity 
-	#if not is_on_floor():
-		#velocity.y += gravity
+	#call the movement function
+	move_to_direction()
 
 	#call the move function
 	move_and_slide()
-
-func _unhandled_input(event: InputEvent) -> void:
-	#Movement code
+	
+#function for input movement
+func move_to_direction() -> void:
 	if Input.is_action_pressed("move_left"):
-		pass
+		velocity.x -= speed
+		anim.flip_h = true
 	
 	if Input.is_action_pressed("move_right"):
-		pass
+		velocity.x += speed
+		anim.flip_h = false
 
-	if Input.is_action_just_pressed("jump"):
-		pass
+	#jump code
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y -= 6000
+		
+	#gravity
+	if is_on_floor() == false:
+		velocity.y += gravity
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	#Attack code
+	if Input.is_action_pressed("fire1"):
+		can_attack = true
+		anim.play("Attack")
+		#set a timer to start the next animation
+		attack_delay.start()
+		do_damage() 
+		
+
+#Ray's animation code
+func set_animation():
+	if can_attack == false:
+		if velocity:
+			anim.play("Walk")
+		else:
+			anim.play("Idle")
+
+#set the variable to false so that other animation gets played instead
+func set_attack_mode() -> void:
+	can_attack = false
+
+#apply damage to NPC when its called 
+func do_damage() -> void:
+	var collided_with = attack_col.get_overlapping_bodies()
+	
+	for bodies in collided_with:
+		if 'health_resource' in bodies:
+			#print(bodies.name, bodies.health_resource.current_health)
+			bodies.health_resource.current_health -= health_resource.attack_damage
+	
