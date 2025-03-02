@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0g6lnkd0i5xv"
+path="res://.godot/imported/Voicy_Rick Sanchez CPU.mp3-0ceca355805c61f3b4c6f055b9b5c7fb.mp3str"
+
+[deps]
+
+source_file="res://Assets/AudioFiles/Voicy_Rick Sanchez CPU.mp3"
+dest_files=["res://.godot/imported/Voicy_Rick Sanchez CPU.mp3-0ceca355805c61f3b4c6f055b9b5c7fb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

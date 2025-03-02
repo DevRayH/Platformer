@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3yvm6itjt0fx" path="res://icon.svg" id="1_sagn1"]
 [ext_resource type="Texture2D" uid="uid://ce13d28oogbbh" path="res://Assets/PixelFantasy_Caves_1.0/background3.png" id="2_qqttg"]
 [ext_resource type="PackedScene" uid="uid://bky1md52fxi51" path="res://Objects/spawn_point.tscn" id="4_yxyc6"]
-[ext_resource type="PackedScene" uid="uid://blky32l83ssv3" path="res://Objects/patrol_point.tscn" id="5_mwl76"]
+[ext_resource type="AudioStream" uid="uid://bf8fly8r8pdj7" path="res://Assets/AudioFiles/Voicy_Try to relax.mp3" id="6_t0a7k"]
 [ext_resource type="PackedScene" uid="uid://cb4mtsv4w4j1e" path="res://Scenes/player.tscn" id="6_untl4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mddpl"]
@@ -81,14 +81,14 @@ texture = ExtResource("1_sagn1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/GroundLevel3/StaticBody2D"]
 shape = SubResource("RectangleShape2D_3o4ay")
 
-[node name="PatrolPoint" parent="." instance=ExtResource("5_mwl76")]
-position = Vector2(455.235, 534.495)
-
 [node name="Player" parent="." instance=ExtResource("6_untl4")]
 position = Vector2(527, 544)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_t0a7k")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

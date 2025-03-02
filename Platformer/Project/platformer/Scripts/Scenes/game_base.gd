@@ -1,13 +1,16 @@
 extends Node
 
+# Preloads the main menu
 var main_menu:PackedScene = preload("res://Scenes/main_menu.tscn")
 
 
 func _enter_tree() -> void:
+	# Passes references on the base nodes to the object reference class on the autoload
 	set_references()
 
 
 func _ready() -> void:
+	# Loads the main menu into the scene tree
 	GameMaster.scene_change.load_scene(main_menu, GameMaster.obj_ref.menu_base)
 
 

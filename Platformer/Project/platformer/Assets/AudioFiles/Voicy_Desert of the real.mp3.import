@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyxnt0ycbxvaf"
+path="res://.godot/imported/Voicy_Desert of the real.mp3-b7d648d383ffa2b1e2b08c2a28ddc44a.mp3str"
+
+[deps]
+
+source_file="res://Assets/AudioFiles/Voicy_Desert of the real.mp3"
+dest_files=["res://.godot/imported/Voicy_Desert of the real.mp3-b7d648d383ffa2b1e2b08c2a28ddc44a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
