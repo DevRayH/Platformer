@@ -38,7 +38,7 @@ position = Vector2(574.5, 319.5)
 scale = Vector2(1.19896, 1.37708)
 texture = ExtResource("2_qqttg")
 
-[node name="SpawnPoint" parent="." instance=ExtResource("4_yxyc6")]
+[node name="NPCSpawnPoint" parent="." instance=ExtResource("4_yxyc6")]
 position = Vector2(641, 376.165)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -90,5 +90,8 @@ autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_t0a7k")
+
+[node name="PlayerpawnPoint" parent="." instance=ExtResource("4_yxyc6")]
+position = Vector2(527, 544)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

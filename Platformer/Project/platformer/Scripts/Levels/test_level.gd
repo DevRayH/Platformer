@@ -2,6 +2,7 @@ extends Node2D
 
 # Preloads the mushroom NPC scene
 var mushroom:PackedScene = preload("res://Scenes/mushroom.tscn")
+var player_scene:PackedScene = preload("res://Scenes/player.tscn")
 
 @onready var audio:AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -19,3 +20,6 @@ func ready_scene():
 # On Time out loads a new NPC mushroom into the scene tree
 func _on_timer_timeout() -> void:
 	GameMaster.scene_change.npc_loading(mushroom, self, get_tree().get_nodes_in_group("SpawnPoints")[0].position)
+	
+	if GameMaster.obj_ref.current_player == null:
+		GameMaster.game_stats.player_lives(player_scene)

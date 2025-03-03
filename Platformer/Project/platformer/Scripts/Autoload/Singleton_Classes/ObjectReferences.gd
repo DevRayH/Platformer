@@ -11,3 +11,10 @@ var menu_base:Node
 
 # Stores a reference to the current active player node
 var current_player:CharacterBody2D
+
+# Stores a reference to the player lives lable
+var player_lives_label:Label
+# Stores a reference to the score label
+var score_lable:Label
+# Stores a reference to the info menu
+var info_menu:Control 

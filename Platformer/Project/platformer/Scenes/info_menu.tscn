@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://34yyusw4fw1e"]
+[gd_scene load_steps=2 format=3 uid="uid://34yyusw4fw1e"]
+
+[ext_resource type="Script" path="res://Scenes/info_menu.gd" id="1_itat3"]
 
 [node name="InfoMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_itat3")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -25,12 +28,12 @@ layout_mode = 2
 theme_override_constants/h_separation = 1085
 columns = 2
 
-[node name="LivesLable" type="Label" parent="BoxContainer/GridContainer"]
+[node name="LivesLabel" type="Label" parent="BoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "3"
 
-[node name="ScoreLable" type="Label" parent="BoxContainer/GridContainer"]
+[node name="ScoreLabel" type="Label" parent="BoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 50

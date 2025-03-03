@@ -9,3 +9,6 @@ static var obj_ref:Object_References = Object_References.new()
 
 # Scene changing script
 static var scene_change:SceneChangeObject = SceneChangeObject.new()
+
+# Game stats script
+static  var game_stats:Game_Stats_Object = Game_Stats_Object.new()
