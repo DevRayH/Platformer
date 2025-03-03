@@ -25,5 +25,7 @@ func _on_exit_b_pressed() -> void:
 func _on_return_b_pressed() -> void:
 	# Removes the pause menu from the scene tree
 	GameMaster.scene_change.remove_scene(self, GameMaster.obj_ref.menu_base.get_child(0))
+	# Sets infor menu to visible
+	GameMaster.obj_ref.info_menu.show()
 	# Sets the global paused bool to false allowing npc movement
 	GameMaster.npc_object.paused = false

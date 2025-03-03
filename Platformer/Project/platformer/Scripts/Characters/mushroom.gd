@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if nav_mesh_ready:
 		# Calls global movement function and passes a refernce to the calling node and elapsed time
 		GameMaster.npc_object.movement(self, delta)
-	
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

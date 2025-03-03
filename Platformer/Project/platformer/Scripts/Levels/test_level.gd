@@ -22,4 +22,4 @@ func _on_timer_timeout() -> void:
 	GameMaster.scene_change.npc_loading(mushroom, self, get_tree().get_nodes_in_group("SpawnPoints")[0].position)
 	
 	if GameMaster.obj_ref.current_player == null:
-		GameMaster.game_stats.player_lives(player_scene)
+		GameMaster.game_stats.player_lives(player_scene, self)
