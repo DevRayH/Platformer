@@ -19,6 +19,9 @@ var current_state:NPC_Object.NPCStates
 # Creates a local heath resource and exports it to the inspector
 @export var health_resource:Health = Health.new()
 
+func _ready() -> void:
+	health_resource.died.connect(dead)
+
 
 func _physics_process(delta: float) -> void:
 	if nav_mesh_ready:
@@ -66,3 +69,6 @@ func _on_attack_area_body_exited(body: Node2D) -> void:
 # When NPC reaches it's current target the local current state is changed to IDLE
 func _on_navigation_link_2d_target_reached() -> void:
 	current_state = GameMaster.npc_object.NPCStates.IDLE
+
+func dead() -> void:
+	queue_free()

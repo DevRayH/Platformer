@@ -25,7 +25,6 @@ texture = ExtResource("2_bgg8y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(572, 336.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mjeft")
 
 [node name="Mushroom" parent="RigidBody2D" instance=ExtResource("3_furxa")]

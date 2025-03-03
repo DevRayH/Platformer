@@ -66,7 +66,10 @@ func move_to_direction() -> void:
 #It doesn't work properly for attack button, like it doesn't register inputs when
 #the attack button is being held. 
 func _unhandled_input(event: InputEvent) -> void:
+	
 	pass
+	#needs to be at the bottom
+	#get_tree().set_input_as_handled()
 		
 
 #Ray's animation code
@@ -88,5 +91,5 @@ func do_damage() -> void:
 	for bodies in collided_with:
 		if 'health_resource' in bodies:
 			#print(bodies.name, bodies.health_resource.current_health)
-			bodies.health_resource.current_health -= health_resource.attack_damage
+			bodies.health_resource.take_damage(health_resource.attack_damage)
 	
