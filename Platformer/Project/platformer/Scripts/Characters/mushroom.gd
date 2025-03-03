@@ -24,6 +24,9 @@ func _physics_process(delta: float) -> void:
 	if nav_mesh_ready:
 		# Calls global movement function and passes a refernce to the calling node and elapsed time
 		GameMaster.npc_object.movement(self, delta)
+	if health_resource.current_health == 0 and GameMaster.obj_ref.current_player.sprite.is_playing() == false:
+		GameMaster.scene_change.remove_scene(self, GameMaster.obj_ref.scene_base.get_child(0))
+		GameMaster.obj_ref.current_player.current_target = null
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

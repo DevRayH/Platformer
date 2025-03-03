@@ -6,3 +6,6 @@ class_name Health
 @export var current_health:int = 0
 # Stores an exported values for node local attack damage
 @export var attack_damage:int = 0
+
+func take_damage(passedDamage:int):
+	current_health -= passedDamage

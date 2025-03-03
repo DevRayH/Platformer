@@ -64,4 +64,4 @@ func state_machine(passedBody:CharacterBody2D):
 			if passedBody.anim.is_playing() == false:
 				passedBody.anim.play("Attack")
 				# Passes calling node's local damage factor to it's local current target
-				passedBody.current_target.health_resource.current_health -= passedBody.health_resource.attack_damage
+				passedBody.current_target.health_resource.take_damage(passedBody.health_resource.attack_damage)
