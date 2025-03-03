@@ -18,21 +18,27 @@ var current_state:NPC_Object.NPCStates
 
 # Creates a local heath resource and exports it to the inspector
 @export var health_resource:Health = Health.new()
+var current_health:int = 10
 
 
 func _physics_process(delta: float) -> void:
 	if nav_mesh_ready:
 		# Calls global movement function and passes a refernce to the calling node and elapsed time
 		GameMaster.npc_object.movement(self, delta)
-	if health_resource.current_health == 0 and GameMaster.obj_ref.current_player.sprite.is_playing() == false:
-		GameMaster.scene_change.remove_scene(self, GameMaster.obj_ref.scene_base.get_child(0))
-		GameMaster.obj_ref.current_player.current_target = null
+	if self.current_health == 0 and GameMaster.obj_ref.current_player.sprite.is_playing() == false:
+		#GameMaster.scene_change.remove_scene(self, GameMaster.obj_ref.scene_base.get_child(0))
+		get_parent().remove_child(self)
+		self.queue_free()
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# Waits one cycle for the nav mesh to move into the tree
 	nav_mesh_ready = true
+
+
+func take_damage(passedDamage:int):
+	current_health -= passedDamage
 
 
 # If active player node enters this area the local current state is set to Attacking

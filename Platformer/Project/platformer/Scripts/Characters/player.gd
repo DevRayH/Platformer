@@ -22,7 +22,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	if GameMaster.obj_ref.current_player == null:
 		GameMaster.obj_ref.current_player = self
-	GameMaster.npc_object.paused = true	
+	#GameMaster.npc_object.paused = true	
 
 
 func _physics_process(delta: float) -> void:
@@ -60,8 +60,9 @@ func movement():
 		sprite.flip_h = true
 		current_target = null
 		var ray_targ:Vector2 = ray.target_position
-		ray_targ.x *= -1
-		ray.target_position = ray_targ
+		if ray_targ.x > 0.0:
+			ray_targ.x *= -1
+			ray.target_position = ray_targ
 		current_state = PlayerObject.States.RUNNING
 		
 	elif direction > 0.0:
@@ -71,8 +72,9 @@ func movement():
 		sprite.flip_h = false
 		current_target = null
 		var ray_targ:Vector2 = ray.target_position
-		ray_targ.x *= -1
-		ray.target_position = ray_targ
+		if ray_targ.x < 0.0:
+			ray_targ.x *= -1
+			ray.target_position = ray_targ
 		current_state = PlayerObject.States.RUNNING
 	
 	else:
@@ -112,8 +114,7 @@ func attack():
 	
 func target():
 	if ray.is_colliding():
-		if 'health_resource' in ray.get_collider():
-			if current_target == null:
-				current_target = ray.get_collider()
+		if current_target == null:
+			current_target = ray.get_collider()
 	else:
 		current_target = null

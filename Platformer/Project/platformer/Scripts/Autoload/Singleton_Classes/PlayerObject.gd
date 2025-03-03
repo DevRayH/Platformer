@@ -13,6 +13,7 @@ func state_machine(passedPlayer:CharacterBody2D):
 			passedPlayer.sprite.offset.y = 3.55
 			passedPlayer.sprite.play("Run")
 		2:
+			passedPlayer.sprite.offset.y = 4.135
 			passedPlayer.sprite.play("Attack")
 			if passedPlayer.current_target != null:
-				passedPlayer.current_target.health_resource.take_damage(passedPlayer.health_resource.attack_damage)
+				passedPlayer.current_target.take_damage(passedPlayer.health_resource.attack_damage)

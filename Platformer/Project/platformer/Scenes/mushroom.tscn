@@ -1,15 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://mlrqr7087jg5"]
+[gd_scene load_steps=33 format=3 uid="uid://mlrqr7087jg5"]
 
 [ext_resource type="Texture2D" uid="uid://c8o1unqjeecku" path="res://Assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_nq82t"]
 [ext_resource type="Script" path="res://Scripts/Characters/mushroom.gd" id="1_wte86"]
-[ext_resource type="Script" path="res://Scripts/Resources/Health.gd" id="2_2foci"]
 [ext_resource type="Texture2D" uid="uid://w0kumbqeboh3" path="res://Assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Attack.png" id="2_78fyi"]
 [ext_resource type="Texture2D" uid="uid://jvyegcygdabb" path="res://Assets/Forest_Monsters_FREE/Forest_Monsters_FREE/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_kmkt6"]
-
-[sub_resource type="Resource" id="Resource_blvpk"]
-script = ExtResource("2_2foci")
-current_health = 10
-attack_damage = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ues2c"]
 size = Vector2(12, 33)
@@ -219,7 +213,6 @@ size = Vector2(32, 21)
 collision_layer = 129
 collision_mask = 129
 script = ExtResource("1_wte86")
-health_resource = SubResource("Resource_blvpk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
